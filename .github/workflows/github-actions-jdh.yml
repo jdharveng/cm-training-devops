@@ -1,13 +1,17 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
+
 jobs:
   lint-python:
     runs-on: ubuntu-latest
+    defaults:
+      run :
+        working-directory: ./math_api
     steps:
       - uses: actions/checkout@v2 # using your own repo as start
 
-      - name: Set up Python 3.9
+      - name: Set up Python 3.9 # you need python installed before the other installations
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
