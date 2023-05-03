@@ -23,6 +23,7 @@ jobs:
           pip install pre-commit==2.13.0
           poetry config virtualenvs.create false
           poetry install
+          poetry --version
 
       - name: Run tests
         run:
