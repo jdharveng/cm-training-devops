@@ -25,5 +25,5 @@ jobs:
       - name: 'Build Image'
         run: |
           export DATETIME_TAG=$(date+%Y%m%d%H%M%S)
-          docker build . --tag ghcr.io/jerome.dharveng@hotmail.com/store:${{DATETIME_TAG}}
-          docker push ghcr.io/jerome.dharveng@hotmail.com/store:${{DATETIME_TAG}}
+          docker build . --tag ghcr.io/jerome.dharveng@hotmail.com/store:$DATETIME_TAG
+          docker push ghcr.io/jerome.dharveng@hotmail.com/store:$DATETIME_TAG
