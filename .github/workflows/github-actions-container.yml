@@ -1,8 +1,9 @@
 name: GitHub Actions Container
 run-name: ${{ github.actor }} building
 on:
-  branches:
-    - main
+  push:
+    branches:
+      - main
 
 jobs:
   Build container:

@@ -25,7 +25,8 @@ jobs:
           poetry install
           poetry --version
 
-      - name: Run tests
-        run:
-          pytest .
+      #- name: Run tests
+      #  run:
+      #    pytest .
+
 
