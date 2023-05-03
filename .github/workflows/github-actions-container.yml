@@ -1,0 +1,28 @@
+name: GitHub Actions Container
+run-name: ${{ github.actor }} building
+on:
+  branches:
+    - main
+
+jobs:
+  Build container:
+    runs-on: ubuntu-latest
+    defaults:
+      run :
+        working-directory: ./math_api
+
+    steps:
+      - uses: actions/checkout@v2 # using your own repo as start
+
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+
+      - name: 'Build Image'
+        run: |
+          export DATETIME_TAG=$(date+%Y%m%d%H%M%S)
+          docker build . --tag ghcr.io/jerome.dharveng@hotmail.com/store:${{DATETIME_TAG}}
+          docker push ghcr.io/jerome.dharveng@hotmail.com/store:${{DATETIME_TAG}}
